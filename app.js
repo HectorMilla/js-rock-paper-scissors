@@ -26,12 +26,13 @@ let winner = (playerChoice, computerChoice) => {
 };
 
 function game() {
+  winner(playerChoice(), computerChoice());
+  let playAgain = prompt("Do you want to play again?(yes/no)");
   let running = true;
-
   while (running) {
-    let playAgain = prompt("Do you want to play again?(yes/no)").toLowerCase();
     if (playAgain == "yes") {
       winner(playerChoice(), computerChoice());
+      playAgain = prompt("Do you want to play again?(yes/no)");
     } else {
       running = false;
       alert("Thank you for playing");
