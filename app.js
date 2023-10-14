@@ -16,7 +16,7 @@ let computerChoice = () => {
 let winner = () => {
   let playerScore = 0;
   let computerScore = 0;
-  let winningScore = 5;
+  let winningScore = 1;
   while (playerScore < winningScore && computerScore < winningScore) {
     let player = playerChoice();
     let computer = computerChoice();
