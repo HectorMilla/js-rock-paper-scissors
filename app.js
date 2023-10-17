@@ -2,6 +2,7 @@ const button = document.querySelectorAll(".choice");
 const score = document.getElementById("score");
 const result = document.getElementById("result");
 const draw = document.getElementById("draw");
+const playAgain = document.getElementById("playAgain");
 // get computer choice
 let computerChoice = () => {
   let choices = ["paper", "rock", "scissors"];
@@ -28,32 +29,33 @@ let gameLoop = (playerChoice) => {
     computer == "paper" ? playerScore++ : computerScore++;
   }
   score.innerHTML = `The score is Player:${playerScore} Computer:${computerScore}`;
-
-  if (playerScore == winningScore) {
-    result.innerHTML = "You Won";
-  } else if (computerScore == winningScore) {
-    result.innerHTML = "Computer wins! Better luck next time!";
-  }
 };
 let test = (e) => {
-  gameLoop(e.target.id);
+  if (playerScore != winningScore && computerScore != winningScore) {
+    gameLoop(e.target.id);
+  } else {
+    if (playerScore === winningScore) {
+      result.innerHTML = "You Won";
+    } else if (computerScore === winningScore) {
+      result.innerHTML = "Computer wins! Better luck next time!";
+    }
+    playAgain.style.display = "block";
+  }
 };
 
 button.forEach((i) => i.addEventListener("click", test));
 
-// function game() {
-//   game();
-//   let playAgain = prompt("Do you want to play again?(yes/no)");
-//   let running = true;
-//   while (running) {
-//     if (playAgain == "yes") {
-//       game(playerChoice(), computerChoice());
-//       playAgain = prompt("Do you want to play again?(yes/no)");
-//     } else {
-//       running = false;
-//       console.log("Thank you for playing");
-//     }
-//   }
-// }
-
-//game();
+function game() {
+  game();
+  let playAgain = prompt("Do you want to play again?(yes/no)");
+  let running = true;
+  while (running) {
+    if (playAgain == "yes") {
+      game(playerChoice(), computerChoice());
+      playAgain = prompt("Do you want to play again?(yes/no)");
+    } else {
+      running = false;
+      console.log("Thank you for playing");
+    }
+  }
+}
