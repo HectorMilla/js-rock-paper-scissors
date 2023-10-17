@@ -1,24 +1,34 @@
 //get player choice
-let playerChoice = () => {
-  let answer = prompt(
-    "What will you choose?(Rock, Paper, or Scissors)"
-  ).toLowerCase();
-  return answer;
-};
-//get computer choice
+// let buttons = document.getElementsByClassName("choice");
+
+// for (let i = 0; i < buttons.length; i++) {
+//   buttons.item(i).addEventListener("click", (e) => {
+//     choice = e.target.id;
+//   });
+// }
+
+let test = document.addEventListener("click", (e) => {
+  let choice;
+  if (e.target.classList.contains("choice")) {
+    choice = e.target.id;
+  }
+  game(choice);
+});
+
+// get computer choice
 let computerChoice = () => {
   let choices = ["paper", "rock", "scissors"];
   let choice = choices[Math.floor(Math.random() * choices.length)];
   return choice;
 };
 
-// pick winner
-let winner = () => {
+// pick game
+let game = (playerChoice) => {
   let playerScore = 0;
   let computerScore = 0;
   let winningScore = 1;
   while (playerScore < winningScore && computerScore < winningScore) {
-    let player = playerChoice();
+    let player = playerChoice;
     let computer = computerChoice();
     if (player == computer) {
       alert("its a draw");
@@ -29,6 +39,7 @@ let winner = () => {
     } else if (player == "scissors") {
       computer == "paper" ? playerScore++ : computerScore++;
     }
+
     alert(`The score is Player:${playerScore} Computer:${computerScore}`);
   }
   if (playerScore == winningScore) {
@@ -38,19 +49,19 @@ let winner = () => {
   }
 };
 
-function game() {
-  winner();
-  let playAgain = prompt("Do you want to play again?(yes/no)");
-  let running = true;
-  while (running) {
-    if (playAgain == "yes") {
-      winner(playerChoice(), computerChoice());
-      playAgain = prompt("Do you want to play again?(yes/no)");
-    } else {
-      running = false;
-      alert("Thank you for playing");
-    }
-  }
-}
+// function game() {
+//   game();
+//   let playAgain = prompt("Do you want to play again?(yes/no)");
+//   let running = true;
+//   while (running) {
+//     if (playAgain == "yes") {
+//       game(playerChoice(), computerChoice());
+//       playAgain = prompt("Do you want to play again?(yes/no)");
+//     } else {
+//       running = false;
+//       alert("Thank you for playing");
+//     }
+//   }
+// }
 
-game();
+//game();
