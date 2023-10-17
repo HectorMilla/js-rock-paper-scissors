@@ -1,20 +1,3 @@
-//get player choice
-// let buttons = document.getElementsByClassName("choice");
-
-// for (let i = 0; i < buttons.length; i++) {
-//   buttons.item(i).addEventListener("click", (e) => {
-//     choice = e.target.id;
-//   });
-// }
-
-let test = document.addEventListener("click", (e) => {
-  let choice;
-  if (e.target.classList.contains("choice")) {
-    choice = e.target.id;
-  }
-  game(choice);
-});
-
 // get computer choice
 let computerChoice = () => {
   let choices = ["paper", "rock", "scissors"];
@@ -23,31 +6,34 @@ let computerChoice = () => {
 };
 
 // pick game
-let game = (playerChoice) => {
-  let playerScore = 0;
-  let computerScore = 0;
-  let winningScore = 1;
-  while (playerScore < winningScore && computerScore < winningScore) {
-    let player = playerChoice;
-    let computer = computerChoice();
-    if (player == computer) {
-      alert("its a draw");
-    } else if (player == "paper") {
-      computer == "rock" ? playerScore++ : computerScore++;
-    } else if (player == "rock") {
-      computer == "scissors" ? playerScore++ : computerScore++;
-    } else if (player == "scissors") {
-      computer == "paper" ? playerScore++ : computerScore++;
-    }
-
-    alert(`The score is Player:${playerScore} Computer:${computerScore}`);
+//while (playerScore < winningScore && computerScore < winningScore) {
+let playerScore = 0;
+let computerScore = 0;
+let winningScore = 2;
+let gameLoop = (playerChoice) => {
+  let player = playerChoice;
+  let computer = computerChoice();
+  if (player == computer) {
+    console.log("its a draw");
+  } else if (player == "paper") {
+    computer == "rock" ? playerScore++ : computerScore++;
+  } else if (player == "rock") {
+    computer == "scissors" ? playerScore++ : computerScore++;
+  } else if (player == "scissors") {
+    computer == "paper" ? playerScore++ : computerScore++;
   }
+  console.log(`The score is Player:${playerScore} Computer:${computerScore}`);
   if (playerScore == winningScore) {
     console.log("you won");
   } else if (computerScore == winningScore) {
     console.log("Computer wins! Better luck next time!");
   }
 };
+let test = (e) => {
+  gameLoop(e.target.id);
+};
+let button = document.querySelectorAll(".choice");
+button.forEach((i) => i.addEventListener("click", test));
 
 // function game() {
 //   game();
@@ -59,7 +45,7 @@ let game = (playerChoice) => {
 //       playAgain = prompt("Do you want to play again?(yes/no)");
 //     } else {
 //       running = false;
-//       alert("Thank you for playing");
+//       console.log("Thank you for playing");
 //     }
 //   }
 // }
