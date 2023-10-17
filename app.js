@@ -9,7 +9,7 @@ let computerChoice = () => {
 //while (playerScore < winningScore && computerScore < winningScore) {
 let playerScore = 0;
 let computerScore = 0;
-let winningScore = 2;
+let winningScore = 1;
 let gameLoop = (playerChoice) => {
   let player = playerChoice;
   let computer = computerChoice();
