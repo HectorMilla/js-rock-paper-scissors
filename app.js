@@ -1,3 +1,6 @@
+const button = document.querySelectorAll(".choice");
+const score = document.getElementById("score");
+
 // get computer choice
 let computerChoice = () => {
   let choices = ["paper", "rock", "scissors"];
@@ -22,7 +25,8 @@ let gameLoop = (playerChoice) => {
   } else if (player == "scissors") {
     computer == "paper" ? playerScore++ : computerScore++;
   }
-  console.log(`The score is Player:${playerScore} Computer:${computerScore}`);
+  score.innerText = `The score is Player:${playerScore} Computer:${computerScore}`;
+  console.log();
   if (playerScore == winningScore) {
     console.log("you won");
   } else if (computerScore == winningScore) {
@@ -32,7 +36,7 @@ let gameLoop = (playerChoice) => {
 let test = (e) => {
   gameLoop(e.target.id);
 };
-let button = document.querySelectorAll(".choice");
+
 button.forEach((i) => i.addEventListener("click", test));
 
 // function game() {
